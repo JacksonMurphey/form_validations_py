@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title%}Edit a User{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="m-1">Edit Your User</h2>
+    <a href="/cars" class="btn btn-primary m-1">Cars Home</a>
+    <a href="/users" class="btn btn-warning m-1">Users Home</a>
+    <a href="/makers" class="btn btn-info m-1">Makers Home</a>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/users/{{user.id}}/update" method="POST" class="m-1">
+
+        <div class="form-group">
+            <label for="first_name">User First Name:</label>
+            <input type="text" name="first_name" class="form-control" value="{{user.first_name}}">
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">User Last Name:</label>
+            <input type="text" name="last_name" class="form-control" value="{{user.last_name}}">
+        </div>
+
+        <div class="form-group">
+            <label for="email">User Email:</label>
+            <input type="email" name="email" class="form-control" value="{{user.email}}">
+        </div>
+
+        <input type="submit" name="" id="" value="Update User" class="btn btn-success m-1">
+    </form>
+    <a href="/users/{{user.id}}" class="btn btn-secondary m-2 d-inline">Go Back</a>
+</div>
+
+{% endblock %}

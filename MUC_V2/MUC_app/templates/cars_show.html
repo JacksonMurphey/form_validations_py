@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title%}Car Details{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="m-1">Details for Car: {{car.id}}</h2>
+    <a href="/cars" class="btn btn-primary m-1">Cars Home</a>
+    <a href="/users" class="btn btn-warning m-1">Users Home</a>
+    <a href="/makers" class="btn btn-info m-1">Makers Home</a>
+</div>
+<br>
+<hr>
+<div class="container">
+    <h4>COLOR:</h4>
+    <p>{{car.color}}</p>
+    <h4>YEAR:</h4>
+    <p>{{car.year}}</p>
+    <h4>OWNER:</h4>
+    <p>{{car.user.first_name}} {{car.user.last_name}}</p>
+    <h4>MAKE:</h4>
+    <p>{{car.maker.name}}</p>
+    <h4>CREATED AT: </h4>
+    <p>{{car.created_at}}</p>
+    <h4>UPDATED AT: </h4>
+    <p>{{car.updated_at}}</p>
+    <a href="/cars/{{car.id}}/edit" class="btn btn-secondary m-1">Edit this Car</a>
+    <a href="/cars/{{car.id}}/destroy" class="btn btn-danger m-1">Delete this Car</a>
+
+</div>
+<br>
+<hr>
+
+
+{% endblock %}
+
+<!-- moved out of html -->
+
+<div class="container">
+    <a href="/cars/new" class="btn btn-primary m-1">Create a Car</a>
+    <a href="/users/new" class="btn btn-warning m-1">Create a User</a>
+    <a href="/makers/new" class="btn btn-info m-1">Create a Maker</a>
+</div>

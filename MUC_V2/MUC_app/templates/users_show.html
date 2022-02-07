@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title%}User Details{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="m-1">Details for User: {{user.id}}</h2>
+    <a href="/cars" class="btn btn-primary m-1">Cars Home</a>
+    <a href="/users" class="btn btn-warning m-1">Users Home</a>
+    <a href="/makers" class="btn btn-info m-1">Makers Home</a>
+</div>
+<br>
+<hr>
+<div class="container">
+    <h4>NAME:</h4>
+    <p>{{user.first_name}} {{user.last_name}}</p>
+    <h4>EMAIL: </h4>
+    <p>{{user.email}}</p>
+
+    {% if user.cars %}
+    <h4>{{user.first_name}}'s Cars: </h4>
+
+    <ul>
+        {% for car in user.cars %}
+        <li>{{car.color}} | {{car.maker.name}} | {{car.year}}</li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+    <h4>{{user.first_name}} doesnt own a car.</h4>
+    {% endif %}
+
+    <h4>CREATED AT: </h4>
+    <p>{{user.created_at}}</p>
+    <h4>UPDATED AT: </h4>
+    <p>{{user.updated_at}}</p>
+    <a href="/users/{{user.id}}/edit" class="btn btn-secondary m-1">Edit this User</a>
+    <a href="/users/{{user.id}}/destroy" class="btn btn-danger m-1">Delete this User</a>
+
+</div>
+<br>
+<hr>
+
+
+{% endblock %}
+
+<!-- moved out of html -->
+
+<div class="container">
+    <a href="/cars/new" class="btn btn-primary m-1">Create a Car</a>
+    <a href="/users/new" class="btn btn-warning m-1">Create a User</a>
+    <a href="/makers/new" class="btn btn-info m-1">Create a Maker</a>
+</div>

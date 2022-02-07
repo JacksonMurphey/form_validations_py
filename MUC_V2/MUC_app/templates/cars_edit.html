@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title%}Edit a Car{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="m-1">Edit your Car</h2>
+    <a href="/cars" class="btn btn-primary m-1">Cars Home</a>
+    <a href="/users" class="btn btn-warning m-1">Users Home</a>
+    <a href="/makers" class="btn btn-info m-1">Makers Home</a>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/cars/{{car.id}}/update" method="POST" class="m-1">
+
+        <div class="form-group">
+            <label for="color">Car Color: (must be one word, no spaces or numbers)</label>
+            <input type="text" name="color" class="form-control" value="{{car.color}}">
+        </div>
+
+        <div class="form-group">
+            <label for="year">Car Year:</label>
+            <input type="text" name="year" class="form-control" value="{{car.year}}">
+        </div>
+
+        <input type="submit" name="" id="" value="Update Car" class="btn btn-success m-1">
+    </form>
+    <a href="/cars/{{car.id}}" class="btn btn-secondary m-2 d-inline">Go Back</a>
+</div>
+
+{% endblock %}

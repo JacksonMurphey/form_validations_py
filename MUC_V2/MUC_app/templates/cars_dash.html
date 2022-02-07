@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title%}Cars Dashboard{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="m-1">All our Cars:</h2>
+    <a href="/makers" class="btn btn-warning m-1">Makers Home</a>
+    <a href="/users" class="btn btn-info m-1">Users Home</a>
+
+    <table class="table table-hover">
+        <thead>
+            <th>ID</th>
+            <th>COLOR</th>
+            <th>YEAR</th>
+            <th>ACTIONS</th>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+            <tr>
+                <td>{{car.id}}</td>
+                <td>{{car.color}}</td>
+                <td>{{car.year}}</td>
+                <td><a href="/cars/{{car.id}}">View</a> | <a href="/cars/{{car.id}}/edit">Edit</a> | <a
+                        href="/cars/{{car.id}}/destroy">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/cars/new" class="btn btn-primary m-1">Create a New Car</a>
+
+
+</div>
+
+{% endblock %}

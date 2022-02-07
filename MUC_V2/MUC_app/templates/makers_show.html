@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title%}Maker Details{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="m-1">Details for Car: {{maker.id}}</h2>
+    <a href="/cars" class="btn btn-primary m-1">Cars Home</a>
+    <a href="/users" class="btn btn-warning m-1">Users Home</a>
+    <a href="/makers" class="btn btn-info m-1">Makers Home</a>
+</div>
+<br>
+<hr>
+<div class="container">
+    <h4>NAME:</h4>
+    <p>{{maker.name}}</p>
+    <h4>CREATED AT: </h4>
+    <p>{{maker.created_at}}</p>
+    <h4>UPDATED AT: </h4>
+    <p>{{maker.updated_at}}</p>
+    <a href="/makers/{{maker.id}}/edit" class="btn btn-secondary m-1">Edit this Maker</a>
+    <a href="/makers/{{maker.id}}/destroy" class="btn btn-danger m-1">Delete this Maker</a>
+
+</div>
+<br>
+<hr>
+
+
+{% endblock %}
+
+<!-- moved out of html -->
+
+<div class="container">
+    <a href="/cars/new" class="btn btn-primary m-1">Create a Car</a>
+    <a href="/users/new" class="btn btn-warning m-1">Create a User</a>
+    <a href="/makers/new" class="btn btn-info m-1">Create a Maker</a>
+</div>

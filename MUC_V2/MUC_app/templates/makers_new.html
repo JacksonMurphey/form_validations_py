@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title%}Create Maker{% endblock %}
+{% block content %}
+
+<div class="container">
+
+    <h2 class="m-1">Create a New Maker</h2>
+    <a href="/makers" class="btn btn-primary m-1">Makers Home</a>
+    <a href="/users/new" class="btn btn-warning m-1">Create a User</a>
+    <a href="/cars/new" class="btn btn-info m-1">Create a Car</a>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/makers/create" method="POST" class="m-1">
+
+        <div class="form-group">
+            <label for="name">Maker Name:</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+
+        <input type="submit" name="" id="" value="Create Maker" class="btn btn-success m-1">
+    </form>
+</div>
+
+
+{% endblock %}

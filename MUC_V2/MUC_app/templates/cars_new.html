@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title%}Create Car{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="m-1">Create a New Car</h2>
+    <a href="/cars" class="btn btn-primary m-1">Car Home</a>
+    <a href="/users/new" class="btn btn-warning m-1">Create a User</a>
+    <a href="/makers/new" class="btn btn-info m-1">Create a Maker</a>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/cars/create" method="POST" class="m-1">
+
+        <div class="form-group">
+            <label for="color">Car Color: (must be one word, no spaces or numbers)</label>
+            <input type="text" name="color" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="year">Car Year:</label>
+            <input type="text" name="year" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="user_id">Confirm your User:</label>
+            <select name="user_id" class="form-control">
+                {% for user in users %}
+                <option value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="maker_id">Select a Maker:</label>
+            <select name="maker_id" class="form-control form-hover">
+                {% for maker in makers %}
+                <option value="{{maker.id}}">{{maker.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <input type="submit" name="" id="" value="Create Car" class="btn btn-success m-1">
+    </form>
+</div>
+
+{% endblock %}

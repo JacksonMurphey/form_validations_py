@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title%}Edit a Maker{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="m-1">Edit Your Maker</h2>
+    <a href="/cars" class="btn btn-primary m-1">Cars Home</a>
+    <a href="/users" class="btn btn-warning m-1">Users Home</a>
+    <a href="/makers" class="btn btn-info m-1">Makers Home</a>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/makers/{{maker.id}}/update" method="POST" class="m-1">
+
+        <div class="form-group">
+            <label for="name">Maker Name:</label>
+            <input type="text" name="name" class="form-control" value="{{maker.name}}">
+        </div>
+
+
+        <input type="submit" name="" id="" value="Update Maker" class="btn btn-success m-1">
+    </form>
+    <a href="/makers/{{maker.id}}" class="btn btn-secondary m-2 d-inline">Go Back</a>
+</div>
+
+{% endblock %}
